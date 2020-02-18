@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PhotoSite</title>
+</head>
+<body>
+<div>
+  <h1>PhotoSite List</h1>
+  <h3>User Photo Page</h3>
+</div>
+<div>
+  <h2>photos of   <%= @user.first_name %> <%= @user.last_name %></h2>
+  <% @photos.each do |photo| %>
+    <%= image_tag("/assets/#{photo.file_name}") %>
+    <p> Photo created at   <%= photo.date_time %></p>
+
+    <% @comments.where("photo_id=?",photo.id).each do |comment| %>
+
+      <p> Comment: <%= comment.comment_text %></p>
+      <p> Created at: <%= comment.date_time %></p>
+      <p> Posted by: <%= link_to display_name(comment.user_id) , user_photos_path(comment.user_id) %></p>
+
+    <% end %>
+    </div>
+  <%end%>
+  </body>
+</html>
