@@ -10,7 +10,7 @@
   <h3>User Photo Page</h3>
 </div>
 <div>
-  <h2>photos of   <%= @user.first_name %> <%= @user.last_name %></h2>
+  <h2>Photos of <%= @user.first_name %> <%= @user.last_name %></h2>
   <% @photos.each do |photo| %>
     <%= image_tag("/assets/#{photo.file_name}") %>
     <p> Photo created at   <%= photo.date_time %></p>
